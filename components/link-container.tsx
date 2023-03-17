@@ -10,14 +10,12 @@ const LinkContainer = ({ locations }: LinkContainerProps) => {
   const router = useRouter();
   return (
     <div className="link-container">
-      {locations.map((location, index) => (
+      {locations.map((location) => (
         <Link
           className="link"
-          href={{ pathname: "", query: { name: location, nameId: index } }}
+          href={{ pathname: "", query: { name: location } }}
           key={location}
-          aria-current={
-            Number(router.query.nameId) === index ? "location" : "false"
-          }
+          aria-current={router.query.name === location ? "location" : "false"}
         >
           {location}
         </Link>

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { getChartInfo } from "@/utils/chart-api";
 import { ChartInfoType } from "@/utils/chart-api.types";
+import mockData from "../public/mock-data.json";
 
 export const useChartQuery = (query: { name: string }) => {
   const { data: charts } = useQuery<ChartInfoType | undefined>(
@@ -9,6 +10,7 @@ export const useChartQuery = (query: { name: string }) => {
     {
       staleTime: 30000,
       cacheTime: Infinity,
+      initialData: mockData.response as unknown as ChartInfoType,
     },
   );
 

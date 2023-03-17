@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { EventHandler, MouseEvent, useRef } from "react";
 import { GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { Chart } from "react-chartjs-2";
@@ -44,9 +44,7 @@ const HomePage: NextPage<Props> = () => {
       );
       if (points.length > 0) {
         const routingName = chartData[points[0].index].id;
-        const routingNumber =
-          locations.findIndex((location) => location === routingName) + 1;
-        router.push(`/?name=${routingName}&nameId=${routingNumber}`);
+        router.push(`/?name=${routingName}`);
       }
     }
     return;
