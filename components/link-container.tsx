@@ -13,7 +13,11 @@ const LinkContainer = ({ locations }: LinkContainerProps) => {
       {locations.map((location) => (
         <Link
           className="link"
-          href={{ pathname: "", query: { name: location } }}
+          href={
+            !router.query.name
+              ? { pathname: "", query: { name: location } }
+              : { pathname: "/" }
+          }
           key={location}
           aria-current={router.query.name === location ? "location" : "false"}
         >

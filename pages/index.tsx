@@ -44,7 +44,12 @@ const HomePage: NextPage<Props> = () => {
       );
       if (points.length > 0) {
         const routingName = chartData[points[0].index].id;
-        router.push(`/?name=${routingName}`);
+        if (router.query.name !== routingName) {
+          router.push(`/?name=${routingName}`);
+        }
+        if (router.query.name === routingName) {
+          router.push(`/`);
+        }
       }
     }
     return;
